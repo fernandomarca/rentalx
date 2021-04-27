@@ -8,6 +8,18 @@
       "email": "fernandomarca@hotmail.com"
     }
   },
+  "components": {
+    "schemas": {
+      "schemaTeste": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
   "paths": {
     "/categories": {
       "post": {
