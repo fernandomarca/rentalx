@@ -10,18 +10,48 @@
   },
   "components": {
     "schemas": {
-      "schemaTeste": {
+      "delete": {
         "type": "object",
         "properties": {
           "name": {
             "type": "string"
           }
         }
+      },
+      "get": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "description": { "type": "string" }
+          }
+        }
       }
     }
   },
+
   "paths": {
     "/categories": {
+      "delete": {
+        "description": "delete",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application": {
+              "schema": { "$ref": "#/components/schemas/delete" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+
       "post": {
         "tags": ["Category"],
         "summary": "Create a category",
@@ -65,18 +95,7 @@
             "description": "Success",
             "content": {
               "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "name": {
-                        "type": "string"
-                      },
-                      "description": { "type": "string" }
-                    }
-                  }
-                }
+                "schema": { "$ref": "#/components/schemas/get" }
               }
             }
           }
