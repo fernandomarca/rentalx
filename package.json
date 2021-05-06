@@ -8,6 +8,8 @@
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli"
   },
   "dependencies": {
+    "@types/bcrypt": "^3.0.1",
+    "bcrypt": "^5.0.1",
     "csv-parse": "^4.15.4",
     "express": "^4.17.1",
     "multer": "^1.4.2",

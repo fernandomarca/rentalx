@@ -8,6 +8,7 @@ class UsersRepository implements IUsersRepository {
   constructor() {
     this.repository = getRepository(User);
   }
+
   async create({
     name,
     driver_license,
@@ -21,6 +22,11 @@ class UsersRepository implements IUsersRepository {
       password,
     });
     await this.repository.save(user);
+  }
+
+  async findByEmail(email: string): Promise<User> {
+    const user = await this.repository.findOne({ email });
+    return user;
   }
 }
 
