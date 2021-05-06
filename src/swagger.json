@@ -1,57 +1,15 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "RentalX Documentation",
+    "title": "RentX Documentation",
     "description": "This is an API Rent",
     "version": "1.0.0",
     "contact": {
       "email": "fernandomarca@hotmail.com"
     }
   },
-  "components": {
-    "schemas": {
-      "delete": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          }
-        }
-      },
-      "get": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "name": {
-              "type": "string"
-            },
-            "description": { "type": "string" }
-          }
-        }
-      }
-    }
-  },
-
   "paths": {
     "/categories": {
-      "delete": {
-        "description": "delete",
-        "parameters": [],
-        "requestBody": {
-          "content": {
-            "application": {
-              "schema": { "$ref": "#/components/schemas/delete" }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-
       "post": {
         "tags": ["Category"],
         "summary": "Create a category",
@@ -60,26 +18,21 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string"
-                  },
-                  "description": {
-                    "type": "string"
-                  }
-                },
-                "example": {
-                  "name": "Category Name sample",
-                  "description": "Category description sample"
-                }
+                "$ref": "#/components/schemas/categoryRequestBody"
               }
             }
           }
         },
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/category"
+                }
+              }
+            }
           },
           "500": {
             "description": "Category already exists"
@@ -95,10 +48,142 @@
             "description": "Success",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/get" }
+                "schema": {
+                  "$ref": "#/components/schemas/category"
+                },
+                "example": [
+                  {
+                    "id": "ba11b50f-ef50-448b-aae0-447bd9b8b2bc",
+                    "name": "SUV",
+                    "description": "Utilitário esportivo",
+                    "created_at": "2021-04-29T02:30:17.125Z"
+                  }
+                ]
               }
             }
           }
+        }
+      }
+    },
+    "/categories/import": {
+      "post": {
+        "tags": ["Category"],
+        "summary": "Upload a new category",
+        "description": "Upload a new category",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/specifications": {
+      "post": {
+        "tags": ["Specifications"],
+        "summary": "Create a specification",
+        "description": "Create a new specification",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/specificationRequestBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/specification" }
+              }
+            }
+          },
+          "500": {
+            "description": "Specification already exists!"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "specificationRequestBody": {
+        "type": "object",
+        "required": ["name", "description"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "name": "Câmbio automático",
+          "description": "Carro com câmbio automático"
+        }
+      },
+      "specification": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "created_at": { "type": "string" }
+        },
+        "example": {
+          "id": "ba11b50f-ef50-448b-aae0-447bd9b8b2bc",
+          "name": "Câmbio automático",
+          "description": "Carro com câmbio automático",
+          "created_at": "2021-04-29T02:30:17.125Z"
+        }
+      },
+      "categoryRequestBody": {
+        "type": "object",
+        "required": ["name", "description"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "name": "Category Name sample",
+          "description": "Category description sample"
+        }
+      },
+      "category": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "created_at": { "type": "string" }
+        },
+        "example": {
+          "id": "ba11b50f-ef50-448b-aae0-447bd9b8b2bc",
+          "name": "SUV",
+          "description": "Utilitário esportivo",
+          "created_at": "2021-04-29T02:30:17.125Z"
         }
       }
     }
