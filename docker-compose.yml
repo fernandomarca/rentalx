@@ -4,7 +4,7 @@ services:
   database:
     image: postgres
     container_name: database_ignite
-    restart: always
+    # restart: always
     ports:
       - 5432:5432
     environment:
