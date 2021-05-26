@@ -13,9 +13,9 @@ Não há
 
 **Requisitos funcionais**
 [x] Deve ser possível listar todos os carros disponíveis.
-[] deve ser possível listar todos os carros pelo nome da categoria.
-[] deve ser possível listar todos os carros pelo nome da marca.
-[] deve ser possível listar todos os carros pelo nome do carro.
+[x] deve ser possível listar todos os carros pelo nome da categoria.
+[x] deve ser possível listar todos os carros pelo nome da marca.
+[x] deve ser possível listar todos os carros pelo nome do carro.
 **Requisitos não funcionais**
 Não há
 **Regras de negócio**
