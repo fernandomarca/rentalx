@@ -2,14 +2,20 @@ import { RentalsRepositoryInMemory } from "@modules/rentals/repositories/in_memo
 import { AppError } from "@shared/errors/AppError";
 import { CreateRentalUseCase } from "./CreateRentalUseCase";
 import dayjs from "dayjs";
+import { DayjsDateProvider } from "@shared/container/providers/DateProvider/implementations/DayjsDateProvider";
 let createRentalUseCase: CreateRentalUseCase;
 let rentalsRepositoryInMemory: RentalsRepositoryInMemory;
+let dayjsDateProvider: DayjsDateProvider;
 
 describe("Create Rental", () => {
   const dayAdd24Hours = dayjs().add(1, "day").toDate();
   beforeEach(() => {
     rentalsRepositoryInMemory = new RentalsRepositoryInMemory();
-    createRentalUseCase = new CreateRentalUseCase(rentalsRepositoryInMemory);
+    dayjsDateProvider = new DayjsDateProvider();
+    createRentalUseCase = new CreateRentalUseCase(
+      rentalsRepositoryInMemory,
+      dayjsDateProvider
+    );
   });
 
   it("should be able to create a new rental", async () => {
@@ -60,7 +66,7 @@ describe("Create Rental", () => {
       await createRentalUseCase.execute({
         user_id: "12345",
         car_id: "121313",
-        expected_return_date: dayjs().toDate(),
+        expected_return_date: dayjsDateProvider.dateNow(),
       });
     }).rejects.toBeInstanceOf(AppError);
   });

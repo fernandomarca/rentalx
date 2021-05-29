@@ -48,6 +48,6 @@ Não há
 **Requisitos funcionais**
 [x] Deve ser possível cadastrar um aluguel
 **Regras de negócio**
-[] O aluguel deve ter duração mínima de 24 hora.
+[x] O aluguel deve ter duração mínima de 24 hora.
 [x] não deve ser possível cadastrar um novo aluguel caso já exista um aberto para o mesmo usuário.
 [x] não deve ser possível cadastrar um novo aluguel caso já exista um aberto para o mesmo carro.
