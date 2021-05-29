@@ -12,6 +12,7 @@ describe("List Cars", () => {
   });
   it("Should be able to list all available cars", async () => {
     const car = await carsRepositoryInMemory.create({
+      id: "12345",
       name: "Car1",
       description: "Car description",
       brand: "car brand",
@@ -22,6 +23,7 @@ describe("List Cars", () => {
     });
 
     const car2 = await carsRepositoryInMemory.create({
+      id: "123452",
       name: "Car2",
       description: "Car description",
       brand: "car brand",
@@ -40,6 +42,7 @@ describe("List Cars", () => {
   });
   it("should be able to list all available cars by brand", async () => {
     const car = await carsRepositoryInMemory.create({
+      id: "12345",
       name: "Car1",
       description: "Car description",
       brand: "car brand_test",
@@ -50,6 +53,7 @@ describe("List Cars", () => {
     });
 
     await carsRepositoryInMemory.create({
+      id: "123452",
       name: "Car2",
       description: "Car description",
       brand: "car brand_two",
@@ -68,6 +72,7 @@ describe("List Cars", () => {
 
   it("should be able to list all available cars by name", async () => {
     const car = await carsRepositoryInMemory.create({
+      id: "12345",
       name: "Car3",
       description: "Car description",
       brand: "car brand_test",
@@ -78,6 +83,7 @@ describe("List Cars", () => {
     });
 
     await carsRepositoryInMemory.create({
+      id: "123456",
       name: "Car4",
       description: "Car description",
       brand: "car brand_two",
@@ -96,6 +102,7 @@ describe("List Cars", () => {
 
   it("should be able to list all available cars by category", async () => {
     const car = await carsRepositoryInMemory.create({
+      id: "123455",
       name: "Car5",
       description: "Car description",
       brand: "car brand_test",
@@ -106,6 +113,7 @@ describe("List Cars", () => {
     });
 
     await carsRepositoryInMemory.create({
+      id: "123456",
       name: "Car6",
       description: "Car description",
       brand: "car brand_two",
