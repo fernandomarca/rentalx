@@ -18,14 +18,7 @@ describe("Create Category Controller", () => {
      values('${id}','admin','admin@rentx.com.br','${password}','true','now()', 'XXXX')
     `
     );
-  });
 
-  afterAll(async () => {
-    await connection.dropDatabase();
-    await connection.close();
-  });
-
-  it("should be able to list all categories", async () => {
     const responseToken = await request(app).post("/sessions").send({
       email: "admin@rentx.com.br",
       password: "admin",
@@ -42,9 +35,15 @@ describe("Create Category Controller", () => {
       .set({
         Authorization: `Bearer ${token}`,
       });
+  });
 
+  afterAll(async () => {
+    await connection.dropDatabase();
+    await connection.close();
+  });
+
+  it("should be able to list all categories", async () => {
     const response = await request(app).get("/categories");
-    console.log(response.body);
     expect(response.status).toBe(200);
     expect(response.body.length).toBe(1);
     expect(response.body[0]).toHaveProperty("id");

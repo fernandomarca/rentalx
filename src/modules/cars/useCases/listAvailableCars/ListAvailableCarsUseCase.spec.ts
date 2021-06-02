@@ -17,7 +17,7 @@ describe("List Cars", () => {
       description: "Car description",
       brand: "car brand",
       category_id: "category_id",
-      daily_rate: 110.0,
+      daily_rate: 110,
       fine_amount: 40,
       license_plate: "DEF-1236",
     });
@@ -28,12 +28,12 @@ describe("List Cars", () => {
       description: "Car description",
       brand: "car brand",
       category_id: "category_id",
-      daily_rate: 110.0,
-      fine_amount: 40,
-      license_plate: "DEF-1236",
+      daily_rate: 115,
+      fine_amount: 50,
+      license_plate: "DEF-1237",
     });
 
-    car2.available = false;
+    await carsRepositoryInMemory.updateAvailable(car2.id, false);
 
     const cars = await listAvailableCarsUseCase.execute({});
 
