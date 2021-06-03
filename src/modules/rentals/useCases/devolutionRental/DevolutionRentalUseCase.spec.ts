@@ -37,7 +37,6 @@ describe("Devolution Rental", () => {
 
   it("Should be able devolution a rental at 24 hours with not delay", async () => {
     const car = await createCarUseCase.execute({
-      id: "12345",
       name: "Car teste",
       description: "Car teste",
       daily_rate: 100,
@@ -63,7 +62,6 @@ describe("Devolution Rental", () => {
 
   it("Should be able devolution a rental post 24 hours with delay", async () => {
     const car = await createCarUseCase.execute({
-      id: "12345",
       name: "Car teste",
       description: "Car teste",
       daily_rate: 100,
@@ -86,6 +84,6 @@ describe("Devolution Rental", () => {
     });
 
     expect(devolutionRental.total).toBe(180);
-    console.log(devolutionRental);
+    // console.log(devolutionRental);
   });
 });

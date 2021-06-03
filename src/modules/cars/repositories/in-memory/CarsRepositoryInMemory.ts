@@ -5,7 +5,6 @@ import { ICarsRepository } from "../ICarsRepository";
 class CarsRepositoryInMemory implements ICarsRepository {
   cars: Car[] = [];
   async create({
-    id,
     brand,
     category_id,
     daily_rate,
@@ -18,7 +17,6 @@ class CarsRepositoryInMemory implements ICarsRepository {
     const car = new Car();
 
     Object.assign(car, {
-      id,
       brand,
       category_id,
       daily_rate,

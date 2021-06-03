@@ -29,7 +29,6 @@ class RentalsRepositoryInMemory implements IRentalsRepository {
       car_id,
       user_id,
       expected_return_date,
-      // start_date: dayjs().subtract(3, "day").toDate(),//para testar com data retroativa
       start_date: start_date ? start_date : new Date(), //para testar com data retroativa
     });
     this.rentals.push(rental);
