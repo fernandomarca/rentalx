@@ -5,6 +5,7 @@ interface ICreateRentalDTO {
   id?: string;
   end_date?: Date;
   total?: number;
+  start_date?: Date;
 }
 
 export { ICreateRentalDTO };

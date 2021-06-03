@@ -3,11 +3,13 @@ import { Rental } from "@modules/rentals/infra/typeorm/entities/Rental";
 import { IRentalsRepository } from "@modules/rentals/repositories/IRentalsRepository";
 import { IDateProvider } from "@shared/container/providers/DateProvider/IDateProvider";
 import { AppError } from "@shared/errors/AppError";
+import dayjs from "dayjs";
 import { inject, injectable } from "tsyringe";
 interface IRequest {
   user_id: string;
   car_id: string;
   expected_return_date: Date;
+  start_date?: Date;
 }
 
 @injectable()
@@ -25,6 +27,7 @@ class CreateRentalUseCase {
     user_id,
     car_id,
     expected_return_date,
+    start_date,
   }: IRequest): Promise<Rental> {
     const minimumHour = 24;
     //[x] não deve ser possível cadastrar um novo aluguel caso já exista um aberto para o mesmo carro.
@@ -42,7 +45,7 @@ class CreateRentalUseCase {
       throw new AppError("There's a rental in progress for user!");
     }
     //[x] O aluguel deve ter duração mínima de 24 hora.
-    const dateNow = this.dateProvider.dateNow();
+    const dateNow = start_date ? start_date : this.dateProvider.dateNow();
     const compare = this.dateProvider.compareInHours(
       dateNow,
       expected_return_date

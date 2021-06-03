@@ -28,6 +28,7 @@ class RentalsRepository implements IRentalsRepository {
     id,
     end_date,
     total,
+    start_date,
   }: ICreateRentalDTO): Promise<Rental> {
     const rental = this.repository.create({
       car_id,
@@ -35,6 +36,7 @@ class RentalsRepository implements IRentalsRepository {
       user_id,
       id,
       end_date,
+      start_date,
       total,
     });
 
