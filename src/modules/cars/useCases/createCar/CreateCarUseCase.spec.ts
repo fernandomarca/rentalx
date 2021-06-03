@@ -11,7 +11,6 @@ describe("create car", () => {
   });
   it("should be able to create a new car", async () => {
     const car = await createCarUseCase.execute({
-      id: "12345",
       name: "Name Car",
       description: "Description Car",
       daily_rate: 100,
@@ -27,7 +26,6 @@ describe("create car", () => {
   it("should not be able to create a car with exists license plate", async () => {
     expect(async () => {
       await createCarUseCase.execute({
-        id: "12345",
         name: "Car1",
         description: "Description Car",
         daily_rate: 100,
@@ -38,7 +36,6 @@ describe("create car", () => {
       });
 
       await createCarUseCase.execute({
-        id: "123456",
         name: "Car2",
         description: "Description Car",
         daily_rate: 100,
@@ -52,7 +49,6 @@ describe("create car", () => {
 
   it("should not be able to create a car with available false", async () => {
     const car = await createCarUseCase.execute({
-      id: "12345",
       name: "Car Available",
       description: "Description Car",
       daily_rate: 100,

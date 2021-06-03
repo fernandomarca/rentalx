@@ -4,7 +4,7 @@ import { AppError } from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
 
 interface IRequest {
-  id: string;
+  id?: string;
   name: string;
   description: string;
   daily_rate: number;
