@@ -32,6 +32,7 @@ class AuthenticateUserUseCase {
   async execute({ email, password }: IRequest): Promise<IResponse> {
     //Usuário existe
     const user = await this.usersRepository.findByEmail(email);
+
     const {
       expires_in_token,
       secret_token,
@@ -49,7 +50,6 @@ class AuthenticateUserUseCase {
       throw new AppError("Email or password incorrect!");
     }
     //gerar jsonwebtoken
-
     const token = sign({}, secret_token, {
       subject: user.id,
       expiresIn: expires_in_token,
