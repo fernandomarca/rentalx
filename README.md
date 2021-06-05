@@ -71,7 +71,16 @@ para o mesmo carro.
 # Listagem de alugueis para usuário
 
 **RF**
-[]Deve ser possível realizar a busca de todos os alugueis para o usuário
-
+[x]Deve ser possível realizar a busca de todos os alugueis para o usuário
 **RN**
-[]o usuário deve estar logado na aplicação
+[x]o usuário deve estar logado na aplicação
+
+# recuperar senha
+
+**RF**
+[] deve ser possível o usuário recuperar a senha informando o e-email
+[] O usuário deve receber um e-email com o passo a passo para a recuperação da senha
+[] O Usuário deve conseguir inserir uma nova senha
+**RN**
+[] o usuário precisa informar uma nova senha
+[x] o link enviado para a recuperação deve expirar em 3 horas
