@@ -21,7 +21,10 @@ const diskStorage = {
   local:LocalStorageProvider,
   s3:S3StorageProvider
 }
+
+const disk = process.env.dis === "local" ? "local" : "s3";
+ 
 container.registerSingleton<IStorageProvider>(
   "StorageProvider",
-  diskStorage["s3"]
+  diskStorage[disk]
 )

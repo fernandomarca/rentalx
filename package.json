@@ -13,6 +13,7 @@
     "@types/bcrypt": "^3.0.1",
     "aws-sdk": "^2.1049.0",
     "bcrypt": "^5.0.1",
+    "class-transformer": "^0.5.1",
     "csv-parse": "^4.15.4",
     "dayjs": "^1.10.5",
     "dotenv": "^10.0.0",
