@@ -1,19 +1,15 @@
-import { Category } from "@modules/cars/entities/Category";
-import {
-  ICategoriesRepository,
-  ICreateCategoryDTO,
-} from "../ICategoriesRepository";
-
+import { ICategoriesRepository, ICreateCategoryDTO } from "@modules/cars/repositories/ICategoriesRepository";
 class PostgresCategoriesRepository implements ICategoriesRepository {
-  findByName(name: string): Category {
+  findByName(name: string){
     console.log(name);
     return null;
   }
-  list(): Category[] {
+  list() {
     return null;
   }
-  create({ name, description }: ICreateCategoryDTO): void {
+  create({ name, description }: ICreateCategoryDTO) {
     console.log(name, description);
+    return null;
   }
 }
 
