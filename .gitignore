@@ -2,3 +2,8 @@
 /coverage
 .env
 dist
+tmp/*
+!tmp/.gitkeep
+.vscode
+coverage
+ormconfig.json
