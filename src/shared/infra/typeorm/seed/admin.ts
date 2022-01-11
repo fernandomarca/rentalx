@@ -3,7 +3,7 @@ import { hash } from "bcrypt";
 import createConnection from "../index";
 
 async function create() {
-  const connection = await createConnection("localhost");
+  const connection = await createConnection();
   const id = uuidV4();
   const password = await hash("admin", 8);
 
