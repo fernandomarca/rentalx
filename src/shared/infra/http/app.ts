@@ -10,11 +10,12 @@ import swaggerFile from "../../../swagger.json";
 import { router } from "./routes";
 import upload from "@config/upload";
 import cors from "cors";
+import rateLimiter from "./middlewares/rateLimiter";
 
 createConnection();
 
 const app = express();
-
+app.use(rateLimiter);
 app.use(json());
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
