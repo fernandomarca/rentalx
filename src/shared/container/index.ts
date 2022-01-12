@@ -1,5 +1,5 @@
-import { container } from "tsyringe";
 import "@shared/container/providers";
+import { container } from "tsyringe";
 import { UsersRepository } from "@modules/accounts/infra/typeorm/repositories/UsersRespository";
 import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
 import { ICategoriesRepository } from "@modules/cars/repositories/ICategoriesRepository";

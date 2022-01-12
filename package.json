@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@babel/parser": "^7.15.8",
+    "@sentry/node": "^6.16.1",
+    "@sentry/tracing": "^6.16.1",
     "@types/bcrypt": "^3.0.1",
     "aws-sdk": "^2.1049.0",
     "bcrypt": "^5.0.1",
